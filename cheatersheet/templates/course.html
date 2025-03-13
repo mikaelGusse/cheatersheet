@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<html>    
+    <head>
+        <title>Course</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Course Students</h1>
+            <ul>
+                {% for student in students %}
+                <li>{{ student }}</li>
+                {% endfor %}
+            </ul>
+
+            <h1>Course Cases</h1>
+            <ul>
+                {% for case in cases %}
+                <li>{{ case }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
+{% endblock %}

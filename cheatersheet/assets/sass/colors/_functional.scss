@@ -1,0 +1,18 @@
+// These are the colours which add some kind of semantic meaning.
+// Avoid changing these when customising the template if possible.
+// Change these with extreme caution, especially noting the contrast
+// ratios noted.
+
+$aplus-success: #00803c; // There should be a contrast ratio above 4.5 between this and white.
+$aplus-info: #1d7792; // This is a darkened version of the bootstrap 3 default. Contrast must be >=4.5 with white.
+$aplus-warning: #a6670e; // This is a darkened version of the bootstrap 3 default. Contrast must be >=4.5 with white.
+$aplus-danger: #a50000; // There should be a contrast ratio above 7 between this and white.
+$aplus-focus: #ffdd00; // This should be clearly different fron those defned above and the brand colours.
+
+// These colours may be used to represent the status of the grading.
+$aplus-primary-status-bg: #42a5f5;
+$aplus-default-status-bg: #c5c5c5;
+$aplus-success-status-bg: #8bc34a;
+$aplus-warning-status-bg: #ffb74d;
+$aplus-danger-status-bg: #ff5c72;
+$aplus-info-status-bg: #00bcd4;
