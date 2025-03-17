@@ -6,19 +6,35 @@
     </head>
     <body>
         <div class="container">
-            <h1>Course Students</h1>
-            <ul>
-                {% for student in students %}
-                <li>{{ student }}</li>
-                {% endfor %}
-            </ul>
-
-            <h1>Course Cases</h1>
-            <ul>
-                {% for case in cases %}
-                <li>{{ case }}</li>
-                {% endfor %}
-            </ul>
+            <h1>{{ course.name }}</h1>
+            <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Students</h1>
+                    <ul>
+                        {% for student in students %}
+                        <li>{{ student }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h1>Cases</h1>
+                    <div class="row">
+                        {% for case in cases %}
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ case.name }}</h5>
+                                        <p class="card-text"><strong>Student:</strong> {{ case.student }}</p>
+                                        <p class="card-text"><strong>Created:</strong> {{ case.created_at }}</p>
+                                        <a href="{% url 'case' case.id %}" class="btn btn-primary">View Case</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

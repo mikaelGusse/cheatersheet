@@ -7,9 +7,17 @@
     <h2>Courses</h2>
     <table class = "table-responsive">
     {% for course in courses %}
-        <tr>
-          <td><a href="{% url 'course' course.id %}">{{ course.name }}</a></td>
-        </tr>
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ course.name }}</h5>
+                <p class="card-text"><strong>Cases:</strong> {{ course.cases_number }}</p>
+                <p class="card-text"><strong>Provider:</strong> {{ course.provider }}</p>
+                <p class="card-text"><strong>Created:</strong> {{ course.created }}</p>
+                <a href="{% url 'course' course.id %}" class="btn btn-primary">View Course</a>
+            </div>
+        </div>
+    </div>
     {% endfor %}
     </table>
 </div>

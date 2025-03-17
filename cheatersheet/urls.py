@@ -23,4 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
     path("course/<int:course_id>/", views.course, name="course"),
+    path("case/<int:case_id>/", views.case, name="case"),
+    path('case/<int:case_id>/save/', views.save_case_data_block, name='save_case_data_block'),
 ]

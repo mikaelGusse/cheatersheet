@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Case Edit View</h1>
+    <a href="{% url 'course' case.course.id %}" class="btn btn-primary">Back to Course</a>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Case for {{ case.course.name }}</h5>
+                    <p class="card-text">Student: {{ case.student.id }} ({{case.student.name}})</p>
+                    <p class="card-text">Case created: {{ case.created_at }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h5 class="card-title">Data Blocks for {{ case.student.name }}</h5>
+            {% for data_block in data_blocks %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ data_block.get_data_type_display }}</h5>
+                    <p class="card-text">{{ data_block.data }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <form method="post" action="{% url 'save_case_data_block' case.id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div id="additional-field" style="display: none;">
+                    <label for="additional_input">Additional Input:</label>
+                    <input type="text" id="additional_input" name="additional_input" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Data Block</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dataTypeField = document.querySelector('select[name="data_type"]');
+        const additionalField = document.getElementById('additional-field');
+
+        function toggleAdditionalField() {
+            if (dataTypeField.value == '1') { // Assuming '1' corresponds to 'Code Showcase'
+                additionalField.style.display = 'block';
+            } else {
+                additionalField.style.display = 'none';
+            }
+        }
+
+        dataTypeField.addEventListener('change', toggleAdditionalField);
+        toggleAdditionalField(); // Initial check
+    });
+</script>
+{% endblock %}
